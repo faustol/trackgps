@@ -65,7 +65,7 @@
         showPermanentMessage('Seleccione el Vendedor');
                    
         $.ajax({
-            url: 'http://www.mavijconsulting.com/trackgps/getallroutesformap.php',
+            url: 'getallroutesformap.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -80,7 +80,7 @@
         
     function loadRoutesIntoDropdownBox() {      
         $.ajax({
-            url: 'http://www.mavijconsulting.com/trackgps/getroutes.php',
+            url: 'getroutes.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -94,7 +94,7 @@
     }
 	function validarLogin() {      
         $.ajax({
-            url: 'http://www.mavijconsulting.com/trackgps/getlogin.php',
+            url: 'getlogin.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -142,7 +142,7 @@
 	
 	function loadDatesIntoDropdownBox() {      
         $.ajax({
-            url: 'http://www.mavijconsulting.com/trackgps/getdates.php',
+            url: 'getdates.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -192,17 +192,17 @@
             // console.log($("#routeSelect").prop("selectedIndex"));
 			if((dateSelect.selectedIndex != 0)&& (routeSelect.selectedIndex != 0)){
 				//alert('aqui todos');
-				 var url = 'http://www.mavijconsulting.com/trackgps/getrouteformapdate.php' + $('#routeSelect').val()+'&'+$('#dateSelect').val()+'&horaInicio='+$('#horaInicio').val()+'&horaFin='+$('#horaFin').val();
+				 var url = 'getrouteformapdate.php' + $('#routeSelect').val()+'&'+$('#dateSelect').val()+'&horaInicio='+$('#horaInicio').val()+'&horaFin='+$('#horaFin').val();
 				 
 			}
 			else{
 				
 				if((dateSelect.selectedIndex != 0)){
 				//	alert('aqui fecha');
-				 var url = 'http://www.mavijconsulting.com/trackgps/getrouteformapdate.php' +'?'+$('#dateSelect').val()+'&horaInicio='+$('#horaInicio').val()+'&horaFin='+$('#horaFin').val();;
+				 var url = 'getrouteformapdate.php' +'?'+$('#dateSelect').val()+'&horaInicio='+$('#horaInicio').val()+'&horaFin='+$('#horaFin').val();;
 				}
 				else{
-					 var url = 'http://www.mavijconsulting.com/trackgps/getrouteformapdate.php' + $('#routeSelect').val()+'&horaInicio='+$('#horaInicio').val()+'&horaFin='+$('#horaFin').val();;
+					 var url = 'getrouteformapdate.php' + $('#routeSelect').val()+'&horaInicio='+$('#horaInicio').val()+'&horaFin='+$('#horaFin').val();;
 					
 				}
 				
@@ -231,7 +231,7 @@
         if (hasMap()) {
             // console.log($("#routeSelect").prop("selectedIndex"));
 
-           var url = 'http://www.mavijconsulting.com/trackgps/getrouteformapdate.php' + $('#routeSelect').val()+$('#dateSelect').val();
+           var url = 'getrouteformapdate.php' + $('#routeSelect').val()+$('#dateSelect').val();
 
             $.ajax({
                    url: url,
@@ -352,14 +352,14 @@
         var iconUrl;
 
         if (finalLocation) {
-            iconUrl = 'http://www.mavijconsulting.com/trackgps/images/coolred_small.png';
+            iconUrl = 'images/coolred_small.png';
         } else {
-            iconUrl = 'http://www.mavijconsulting.com/trackgps/images/coolgreen2_small.png';
+            iconUrl = 'images/coolgreen2_small.png';
         }
 
         var markerIcon = new L.Icon({
                 iconUrl:      iconUrl,
-                shadowUrl:    'http://www.mavijconsulting.com/trackgps/images/coolshadow_small.png',
+                shadowUrl:    'images/coolshadow_small.png',
                 iconSize:     [12, 20],
                 shadowSize:   [22, 20],
                 iconAnchor:   [6, 20],
@@ -421,7 +421,7 @@
             gpstrackerMarker.unbindPopup();
             
             gpstrackerMarker.on("click", function() {        
-                var url = 'http://www.mavijconsulting.com/trackgps/getrouteformap.php?sessionid=' + sessionID;
+                var url = 'getrouteformap.php?sessionid=' + sessionID;
 
                 viewingAllRoutes = false;
  
@@ -557,7 +557,7 @@
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){
-                var url = 'http://www.mavijconsulting.com/trackgps/deleteroute.php' + $('#routeSelect').val();
+                var url = 'deleteroute.php' + $('#routeSelect').val();
 
                 $.ajax({
                        url: url,
@@ -583,7 +583,7 @@
         document.getElementById('map-canvas').outerHTML = "<div id='map-canvas'></div>";
 
         $.ajax({
-               url: 'http://www.mavijconsulting.com/trackgps/getroutes.php',
+               url: 'getroutes.php',
                type: 'GET',
                success: function(data) {
                   loadRoutes(data);
